@@ -15,7 +15,7 @@ const BasicButton: React.FC<P> = props => {
   })
   return (
     <button className={className} onClick={props.onClickHandler}>
-      button
+      {props.text}
     </button>
   )
 }
