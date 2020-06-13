@@ -1,0 +1,24 @@
+.BasicButton {
+  padding: 8px 24px;
+  border: solid 1px black;
+  color: white;
+  background-color: black;
+  border-radius: 24px;
+
+  &--animation {
+    transition: all 0.25s ease;
+    &:hover {
+      color: black;
+      background-color: white;
+    }
+    &:active {
+      letter-spacing: 2px;
+    }
+  }
+
+  &--outline {
+    border: solid 1px black;
+    color: black;
+    background-color: white;
+  }
+}
