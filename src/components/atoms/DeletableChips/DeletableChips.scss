@@ -7,4 +7,8 @@
   &__text {
     display: inline;
   }
+
+  &--error {
+    color: red;
+  }
 }

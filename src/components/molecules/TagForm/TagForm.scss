@@ -1,0 +1,13 @@
+.TagForm {
+  border: solid 1px black;
+  &__chipsArea {
+    display: inline-block;
+  }
+  &__textArea {
+    outline: none;
+    height: 100%;
+  }
+  &__error {
+    color: red;
+  }
+}
