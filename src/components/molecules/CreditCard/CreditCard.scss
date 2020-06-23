@@ -23,36 +23,40 @@
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
+    height: 32px;
+    line-height: 32px;
   }
 
   & &__cardNumberDisplayRowPart {
-    display: inline-block;
-    opacity: 0.8;
-    transform: translateY(-36px);
+    display: block;
+    vertical-align: middle;
+    opacity: 1;
+    transform: translateY(-32px);
     transition: all 1s ease-out;
   }
 
   & &__cardNumberDisplayRowPart--anim {
-    display: inline-block;
-    opacity: 1;
+    display: block;
+    vertical-align: middle;
+    opacity: 0;
     transform: translateY(0px);
     transition: all 1s ease-out;
   }
 
   & &__cardNumberHiddenRowPart {
-    display: inline-block;
-    opacity: 0.8;
+    display: block;
+    vertical-align: middle;
+    opacity: 1;
     transform: translateY(0px);
     transition: all 1s ease-out;
-    margin-bottom: 12px;
   }
 
   & &__cardNumberHiddenRowPart--anim {
-    display: inline-block;
-    opacity: 1;
-    transform: translateY(-36px);
+    display: block;
+    vertical-align: middle;
+    opacity: 0;
+    transform: translateY(-32px);
     transition: all 1s ease-out;
-    margin-bottom: 12px;
   }
 
   & &__cardNumber--error {
