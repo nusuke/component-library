@@ -1,0 +1,59 @@
+.CreditCard {
+  background: url("../../../images/card.jpg");
+  object-fit: cover;
+  min-width: 800px;
+  min-height: 600px;
+  border-radius: 40px;
+  position: relative;
+  color: #f0f0f0;
+  text-shadow: #222222 0.1px 0.1px;
+
+  & &__cardNumber {
+    position: absolute;
+    top: 40%;
+    left: 18px;
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: 12px;
+    // overflow: hidden;
+    // height: 32px;
+  }
+
+  & &__cardNumberPart {
+    &:before {
+      content: "#";
+      position: absolute;
+      bottom: 100%;
+    }
+  }
+
+  & &__cardNumberPart--anim {
+    &:before {
+      animation: anime1 5s ease -2s alternate;
+    }
+  }
+
+  @keyframes anime1 {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: -100%;
+    }
+  }
+
+  & &__cardNumber--error {
+    color: #f00000;
+  }
+
+  & &__cartdNumberPart--margin {
+    letter-spacing: 82px;
+  }
+
+  & &__date {
+    font-size: 28px;
+    position: absolute;
+    left: 18px;
+    bottom: 10%;
+  }
+}
