@@ -15,22 +15,20 @@
     font-size: 36px;
     font-weight: bold;
     letter-spacing: 12px;
-    // overflow: hidden;
-    // margin-top: 36px;
-    // transform: translateY(-36px);
+    overflow: hidden;
+    height: 36px;
   }
 
   & &__cardNumberDisplay {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    // overflow: hidden;
   }
 
   & &__cardNumberDisplayRowPart {
     display: inline-block;
     opacity: 0.8;
-    transform: translateY(36px);
+    transform: translateY(-36px);
     transition: all 1s ease-out;
   }
 
@@ -46,15 +44,15 @@
     opacity: 0.8;
     transform: translateY(0px);
     transition: all 1s ease-out;
-    margin-top: 12px;
+    margin-bottom: 12px;
   }
 
   & &__cardNumberHiddenRowPart--anim {
     display: inline-block;
     opacity: 1;
-    transform: translateY(36px);
+    transform: translateY(-36px);
     transition: all 1s ease-out;
-    margin-top: 12px;
+    margin-bottom: 12px;
   }
 
   & &__cardNumber--error {

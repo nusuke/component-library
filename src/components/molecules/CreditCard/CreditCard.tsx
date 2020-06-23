@@ -25,15 +25,6 @@ const CreditCard: React.FC<P> = props => {
             return (
               <React.Fragment key={index}>
                 <span className="CreditCard__cardNumberDisplay">
-                  {props.cardNumber?.[index] ? (
-                    <span className="CreditCard__cardNumberDisplayRowPart">
-                      {props.cardNumber[index]}
-                    </span>
-                  ) : (
-                    <span className="CreditCard__cardNumberDisplayRowPart--anim">
-                      #
-                    </span>
-                  )}
                   <span
                     className={
                       props.cardNumber?.[index]
@@ -43,6 +34,15 @@ const CreditCard: React.FC<P> = props => {
                   >
                     #
                   </span>
+                  {props.cardNumber?.[index] ? (
+                    <span className="CreditCard__cardNumberDisplayRowPart">
+                      {props.cardNumber[index]}
+                    </span>
+                  ) : (
+                    <span className="CreditCard__cardNumberDisplayRowPart--anim">
+                      #
+                    </span>
+                  )}{" "}
                 </span>
                 {(index + 1) % 4 === 0 && (
                   <span className="CreditCard__cardNumberPart--margin"> </span>
