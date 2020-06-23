@@ -19,25 +19,23 @@
     height: 36px;
   }
 
+  $spanHeight: 32px;
   & &__cardNumberDisplay {
     display: inline-flex;
     flex-direction: column;
-    align-items: flex-start;
-    height: 32px;
-    line-height: 32px;
+    height: $spanHeight;
+    line-height: $spanHeight;
   }
 
   & &__cardNumberDisplayRowPart {
     display: block;
-    vertical-align: middle;
     opacity: 1;
-    transform: translateY(-32px);
+    transform: translateY(-$spanHeight);
     transition: all 1s ease-out;
   }
 
   & &__cardNumberDisplayRowPart--anim {
     display: block;
-    vertical-align: middle;
     opacity: 0;
     transform: translateY(0px);
     transition: all 1s ease-out;
@@ -45,7 +43,6 @@
 
   & &__cardNumberHiddenRowPart {
     display: block;
-    vertical-align: middle;
     opacity: 1;
     transform: translateY(0px);
     transition: all 1s ease-out;
@@ -53,9 +50,8 @@
 
   & &__cardNumberHiddenRowPart--anim {
     display: block;
-    vertical-align: middle;
     opacity: 0;
-    transform: translateY(-32px);
+    transform: translateY(-$spanHeight);
     transition: all 1s ease-out;
   }
 
