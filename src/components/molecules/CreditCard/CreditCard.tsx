@@ -27,14 +27,16 @@ const CreditCard: React.FC<P> = props => {
                 <span className="CreditCard__cardNumberDisplay">
                   <span
                     className={
-                      props.cardNumber?.[index]
+                      props.cardNumber?.[index] ||
+                      props.cardNumber?.[index] === 0
                         ? `CreditCard__cardNumberHiddenRowPart--anim`
                         : `CreditCard__cardNumberHiddenRowPart`
                     }
                   >
                     #
                   </span>
-                  {props.cardNumber?.[index] ? (
+                  {props.cardNumber?.[index] ||
+                  props.cardNumber?.[index] === 0 ? (
                     <span className="CreditCard__cardNumberDisplayRowPart">
                       {props.cardNumber[index]}
                     </span>
