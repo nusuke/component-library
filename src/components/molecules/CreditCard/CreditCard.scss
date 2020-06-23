@@ -16,30 +16,45 @@
     font-weight: bold;
     letter-spacing: 12px;
     // overflow: hidden;
-    // height: 32px;
+    // margin-top: 36px;
+    // transform: translateY(-36px);
   }
 
-  & &__cardNumberPart {
-    &:before {
-      content: "#";
-      position: absolute;
-      bottom: 100%;
-    }
+  & &__cardNumberDisplay {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    // overflow: hidden;
   }
 
-  & &__cardNumberPart--anim {
-    &:before {
-      animation: anime1 5s ease -2s alternate;
-    }
+  & &__cardNumberDisplayRowPart {
+    display: inline-block;
+    opacity: 0.8;
+    transform: translateY(36px);
+    transition: all 1s ease-out;
   }
 
-  @keyframes anime1 {
-    0% {
-      top: 0px;
-    }
-    100% {
-      top: -100%;
-    }
+  & &__cardNumberDisplayRowPart--anim {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 1s ease-out;
+  }
+
+  & &__cardNumberHiddenRowPart {
+    display: inline-block;
+    opacity: 0.8;
+    transform: translateY(0px);
+    transition: all 1s ease-out;
+    margin-top: 12px;
+  }
+
+  & &__cardNumberHiddenRowPart--anim {
+    display: inline-block;
+    opacity: 1;
+    transform: translateY(36px);
+    transition: all 1s ease-out;
+    margin-top: 12px;
   }
 
   & &__cardNumber--error {

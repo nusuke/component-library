@@ -9,7 +9,7 @@ interface P {
   }
 }
 const CreditCard: React.FC<P> = props => {
-  const defaultNumber = new Array(16).fill("#")
+  const defaultMask = new Array(16).fill("#")
   const month =
     props.date.month.length === 1 ? [0, props.date.month] : props.date.month
 
@@ -21,11 +21,28 @@ const CreditCard: React.FC<P> = props => {
             16桁以内で入力してください
           </p>
         ) : (
-          defaultNumber.map((sharp, index) => {
+          defaultMask.map((mask, index) => {
             return (
               <React.Fragment key={index}>
-                <span className="CreditCard__cardNumberPart">
-                  {props.cardNumber?.[index] ?? sharp}
+                <span className="CreditCard__cardNumberDisplay">
+                  {props.cardNumber?.[index] ? (
+                    <span className="CreditCard__cardNumberDisplayRowPart">
+                      {props.cardNumber[index]}
+                    </span>
+                  ) : (
+                    <span className="CreditCard__cardNumberDisplayRowPart--anim">
+                      #
+                    </span>
+                  )}
+                  <span
+                    className={
+                      props.cardNumber?.[index]
+                        ? `CreditCard__cardNumberHiddenRowPart--anim`
+                        : `CreditCard__cardNumberHiddenRowPart`
+                    }
+                  >
+                    #
+                  </span>
                 </span>
                 {(index + 1) % 4 === 0 && (
                   <span className="CreditCard__cardNumberPart--margin"> </span>
