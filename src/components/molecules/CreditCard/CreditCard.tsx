@@ -7,6 +7,7 @@ interface P {
     month: number[]
     year: number[]
   }
+  name?: string
 }
 const CreditCard: React.FC<P> = props => {
   const defaultMask = new Array(16).fill("#")
@@ -53,6 +54,11 @@ const CreditCard: React.FC<P> = props => {
             )
           })
         )}
+      </div>
+
+      <div className="CreditCard__name">
+        <label className="CreditCard__nameLabel">name</label>
+        {props.name && <>{props.name}</>}
       </div>
 
       <div className="CreditCard__date">

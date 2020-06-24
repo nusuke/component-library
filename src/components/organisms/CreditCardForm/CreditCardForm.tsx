@@ -30,6 +30,13 @@ const CreditCardForm: React.FC<P> = props => {
     { month: [], year: [] }
   )
 
+  const [name, dispatchName] = React.useReducer(
+    (state: string, action: string) => {
+      return action
+    },
+    ""
+  )
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.split("").map(v => Number(v)) ?? []
     dispatchCardNumber(value)
@@ -43,6 +50,11 @@ const CreditCardForm: React.FC<P> = props => {
   const changeYearHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.currentTarget.value.split("").map(v => Number(v)) ?? []
     dispatchDate({ type: "updateYear", payload: value })
+  }
+
+  const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value
+    dispatchName(value)
   }
 
   const month = [
@@ -70,7 +82,7 @@ const CreditCardForm: React.FC<P> = props => {
 
   return (
     <div className="CreditCardForm">
-      <CreditCard cardNumber={cardNumber} date={date} />
+      <CreditCard cardNumber={cardNumber} date={date} name={name} />
       <form className="CreditCardForm__formArea">
         <div className="CreditCardForm__inputArea">
           <label className="CreditCardForm__label">Card Number</label>
@@ -79,6 +91,10 @@ const CreditCardForm: React.FC<P> = props => {
             onChange={changeHandler}
             className="CreditCardForm__inputCardNumber"
           />
+        </div>
+        <div className="CreditCardForm__inputArea">
+          <label className="CreditCardForm__label">name</label>
+          <input type="text" onChange={nameChangeHandler} />
         </div>
         <div className="CreditCardForm__inputArea">
           <label className="CreditCardForm__label">Expires</label>

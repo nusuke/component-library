@@ -63,6 +63,19 @@
     letter-spacing: 82px;
   }
 
+  & &__name {
+    position: absolute;
+    font-size: 32px;
+    top: 60%;
+    left: 18px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  & &__nameLabel {
+    font-size: 18px;
+  }
+
   & &__date {
     font-size: 28px;
     position: absolute;
