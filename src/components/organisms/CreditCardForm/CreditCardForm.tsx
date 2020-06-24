@@ -37,6 +37,14 @@ const CreditCardForm: React.FC<P> = props => {
     ""
   )
 
+  const [cwr, dispatchCwr] = React.useReducer(
+    (state: number[], action: number[]) => {
+      return action
+    },
+    []
+  )
+  const [cardIsReverse, setCardIsReverse] = useState(false)
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.split("").map(v => Number(v)) ?? []
     dispatchCardNumber(value)
@@ -55,6 +63,17 @@ const CreditCardForm: React.FC<P> = props => {
   const nameChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value
     dispatchName(value)
+  }
+
+  const cwrHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value.split("").map(v => Number(v)) ?? []
+    dispatchCwr(value)
+  }
+
+  const focusCwr = (event: React.FocusEvent<HTMLElement>) => {
+    console.log(event.currentTarget)
+
+    setCardIsReverse(!cardIsReverse)
   }
 
   const month = [
@@ -82,7 +101,13 @@ const CreditCardForm: React.FC<P> = props => {
 
   return (
     <div className="CreditCardForm">
-      <CreditCard cardNumber={cardNumber} date={date} name={name} />
+      <CreditCard
+        cardNumber={cardNumber}
+        date={date}
+        name={name}
+        cwr={cwr}
+        isReverse={cardIsReverse}
+      />
       <form className="CreditCardForm__formArea">
         <div className="CreditCardForm__inputArea">
           <label className="CreditCardForm__label">Card Number</label>
@@ -118,6 +143,17 @@ const CreditCardForm: React.FC<P> = props => {
               ))}
             </select>
           </div>
+        </div>
+
+        <div className="CreditCardForm__inputArea">
+          <label className="CreditCardForm__label">cwr</label>
+          <input
+            type="number"
+            placeholder="cwr"
+            onChange={cwrHandler}
+            onFocus={focusCwr}
+            onBlur={focusCwr}
+          />
         </div>
       </form>
     </div>

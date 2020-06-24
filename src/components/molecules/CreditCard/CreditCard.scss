@@ -112,4 +112,16 @@
   &__back--reverse {
     transform: rotateY(0deg);
   }
+
+  &__backCwr {
+    position: absolute;
+    top: calc(50% + 18px);
+    background-color: #fff;
+    padding: 32px;
+    text-align: right;
+    color: #222222;
+    font-size: 18px;
+    height: 36px;
+    width: 100%;
+  }
 }

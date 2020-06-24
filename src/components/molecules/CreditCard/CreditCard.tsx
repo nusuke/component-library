@@ -10,6 +10,8 @@ interface P {
     year: number[]
   }
   name?: string
+  cwr: number[]
+  isReverse?: boolean
 }
 const CreditCard: React.FC<P> = props => {
   const [isReverse, setIsReverse] = useState(false)
@@ -20,6 +22,10 @@ const CreditCard: React.FC<P> = props => {
   const classNames = classnames("CreditCard__front", {
     "CreditCard__front--reverce": isReverse,
   })
+
+  React.useEffect(() => {
+    setIsReverse(props.isReverse)
+  }, [props.isReverse])
 
   const clickHandler = () => {
     setIsReverse(!isReverse)
@@ -88,10 +94,12 @@ const CreditCard: React.FC<P> = props => {
           isReverse && "CreditCard__back--reverse"
         }`}
       >
-        aaaa
+        <div className="CreditCard__backCwr"> {props.cwr}</div>
       </div>
     </div>
   )
 }
-CreditCard.defaultProps = {}
+CreditCard.defaultProps = {
+  isReverse: false,
+}
 export default CreditCard
