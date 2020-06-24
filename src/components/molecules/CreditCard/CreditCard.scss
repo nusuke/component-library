@@ -1,21 +1,28 @@
 .CreditCard {
-  background: url("../../../images/card.jpg");
-  object-fit: cover;
+  transform-style: preserve-3d;
   min-width: 800px;
   min-height: 600px;
   border-radius: 40px;
-  position: absolute;
   color: #f0f0f0;
   text-shadow: #222222 0.1px 0.1px;
-  transform: rotateY(0deg);
-  transition: all 2s;
-  backface-visibility: hidden;
 
-  &--reverce {
+  &__front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    background: url("../../../images/card.jpg");
+    object-fit: cover;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: all 2s;
+  }
+
+  &__front--reverce {
     transform: rotateY(180deg);
   }
 
-  & &__cardNumber {
+  &__frontCardNumber {
     position: absolute;
     top: 40%;
     left: 18px;
@@ -27,50 +34,50 @@
   }
 
   $spanHeight: 32px;
-  & &__cardNumberDisplay {
+  &__frontCardNumberDisplay {
     display: inline-flex;
     flex-direction: column;
     height: $spanHeight;
     line-height: $spanHeight;
   }
 
-  & &__cardNumberDisplayRowPart {
+  &__frontCardNumberDisplayRowPart {
     display: block;
     opacity: 1;
     transform: translateY(-$spanHeight);
     transition: all 1s ease-out;
   }
 
-  & &__cardNumberDisplayRowPart--anim {
+  &__frontCardNumberDisplayRowPart--anim {
     display: block;
     opacity: 0;
     transform: translateY(0px);
     transition: all 1s ease-out;
   }
 
-  & &__cardNumberHiddenRowPart {
+  &__frontCardNumberHiddenRowPart {
     display: block;
     opacity: 1;
     transform: translateY(0px);
     transition: all 1s ease-out;
   }
 
-  & &__cardNumberHiddenRowPart--anim {
+  &__frontCardNumberHiddenRowPart--anim {
     display: block;
     opacity: 0;
     transform: translateY(-$spanHeight);
     transition: all 1s ease-out;
   }
 
-  & &__cardNumber--error {
+  &__frontCardNumber--error {
     color: #f00000;
   }
 
-  & &__cartdNumberPart--margin {
+  &__frontCartdNumberPart--margin {
     letter-spacing: 82px;
   }
 
-  & &__name {
+  &__frontName {
     position: absolute;
     font-size: 32px;
     top: 60%;
@@ -79,30 +86,30 @@
     flex-direction: column;
   }
 
-  & &__nameLabel {
+  &__frontNameLabel {
     font-size: 18px;
   }
 
-  & &__date {
+  &__frontDate {
     font-size: 28px;
     position: absolute;
     left: 18px;
     bottom: 10%;
   }
 
-  &--reverseDisplay {
+  // card裏面
+  &__back {
+    height: 100%;
+    width: 100%;
     position: absolute;
     background: #333333;
     backface-visibility: hidden;
     transform: rotateY(180deg);
     transition: all 2s;
+    border-radius: inherit;
   }
 
-  &--reverseDisplay--reverce {
+  &__back--reverse {
     transform: rotateY(0deg);
   }
-}
-
-.Card {
-  transform-style: preserve-3d;
 }

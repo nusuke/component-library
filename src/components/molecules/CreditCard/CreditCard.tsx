@@ -17,55 +17,50 @@ const CreditCard: React.FC<P> = props => {
   const month =
     props.date.month.length === 1 ? [0, props.date.month] : props.date.month
 
-  const classNames = classnames("CreditCard", {
-    "CreditCard--reverce": isReverse,
+  const classNames = classnames("CreditCard__front", {
+    "CreditCard__front--reverce": isReverse,
   })
 
   const clickHandler = () => {
     setIsReverse(!isReverse)
   }
 
-  const cardRef = React.useRef<HTMLDivElement>(null)
-  React.useEffect(() => {
-    console.log(cardRef.current)
-  }, [isReverse])
-
   return (
-    <div className="Card">
-      <div className={classNames} onClick={clickHandler} ref={cardRef}>
-        <div className="CreditCard__cardNumber">
+    <div className="CreditCard">
+      <div className={classNames} onClick={clickHandler}>
+        <div className="CreditCard__frontCardNumber">
           {props.cardNumber.length > 16 ? (
-            <p className="CreditCard__cardNumber--error">
+            <p className="CreditCard__frontCardNumber--error">
               16桁以内で入力してください
             </p>
           ) : (
             defaultMask.map((mask, index) => {
               return (
                 <React.Fragment key={index}>
-                  <span className="CreditCard__cardNumberDisplay">
+                  <span className="CreditCard__frontCardNumberDisplay">
                     <span
                       className={
                         props.cardNumber?.[index] ||
                         props.cardNumber?.[index] === 0
-                          ? `CreditCard__cardNumberHiddenRowPart--anim`
-                          : `CreditCard__cardNumberHiddenRowPart`
+                          ? `CreditCard__frontCardNumberHiddenRowPart--anim`
+                          : `CreditCard__frontCardNumberHiddenRowPart`
                       }
                     >
                       #
                     </span>
                     {props.cardNumber?.[index] ||
                     props.cardNumber?.[index] === 0 ? (
-                      <span className="CreditCard__cardNumberDisplayRowPart">
+                      <span className="CreditCard__frontCardNumberDisplayRowPart">
                         {props.cardNumber[index]}
                       </span>
                     ) : (
-                      <span className="CreditCard__cardNumberDisplayRowPart--anim">
+                      <span className="CreditCard__frontCardNumberDisplayRowPart--anim">
                         #
                       </span>
                     )}{" "}
                   </span>
                   {(index + 1) % 4 === 0 && (
-                    <span className="CreditCard__cardNumberPart--margin">
+                    <span className="CreditCard__frontCardNumberPart--margin">
                       {" "}
                     </span>
                   )}
@@ -75,12 +70,12 @@ const CreditCard: React.FC<P> = props => {
           )}
         </div>
 
-        <div className="CreditCard__name">
-          <label className="CreditCard__nameLabel">name</label>
+        <div className="CreditCard__frontName">
+          <label className="CreditCard__frontNameLabel">name</label>
           {props.name && <>{props.name}</>}
         </div>
 
-        <div className="CreditCard__date">
+        <div className="CreditCard__frontDate">
           {month?.[0] ?? "M"}
           {month?.[1] ?? "M"}/{props.date.year?.[0] ?? "D"}
           {props.date.year?.[1] ?? "D"}
@@ -89,11 +84,11 @@ const CreditCard: React.FC<P> = props => {
 
       <div
         onClick={clickHandler}
-        className={`CreditCard CreditCard--reverseDisplay ${
-          isReverse && "CreditCard--reverseDisplay--reverce"
+        className={`CreditCard__back ${
+          isReverse && "CreditCard__back--reverse"
         }`}
       >
-        aaaaaa
+        aaaa
       </div>
     </div>
   )
