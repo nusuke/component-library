@@ -4,9 +4,16 @@
   min-width: 800px;
   min-height: 600px;
   border-radius: 40px;
-  position: relative;
+  position: absolute;
   color: #f0f0f0;
   text-shadow: #222222 0.1px 0.1px;
+  transform: rotateY(0deg);
+  transition: all 2s;
+  backface-visibility: hidden;
+
+  &--reverce {
+    transform: rotateY(180deg);
+  }
 
   & &__cardNumber {
     position: absolute;
@@ -82,4 +89,20 @@
     left: 18px;
     bottom: 10%;
   }
+
+  &--reverseDisplay {
+    position: absolute;
+    background: #333333;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    transition: all 2s;
+  }
+
+  &--reverseDisplay--reverce {
+    transform: rotateY(0deg);
+  }
+}
+
+.Card {
+  transform-style: preserve-3d;
 }
