@@ -11,10 +11,12 @@
   & &__inputArea {
     display: flex;
     flex-direction: column;
+    padding: 12px;
   }
 
   & &__label {
     font-size: 12px;
+    margin-right: 12px;
   }
 
   & &__inputCardNumber {

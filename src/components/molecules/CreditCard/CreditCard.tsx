@@ -87,11 +87,12 @@ const CreditCard: React.FC<P> = props => {
         </div>
 
         <div className="CreditCard__frontName">
-          <label className="CreditCard__frontNameLabel">name</label>
+          <label className="CreditCard__frontNameLabel">Name</label>
           {props.name && <>{props.name}</>}
         </div>
 
         <div className="CreditCard__frontDate">
+          <label className="CreditCard__frontNameLabel">Expire</label>
           {month?.[0] ?? "M"}
           {month?.[1] ?? "M"}/{props.date.year?.[0] ?? "D"}
           {props.date.year?.[1] ?? "D"}
@@ -104,6 +105,7 @@ const CreditCard: React.FC<P> = props => {
           isReverse && "CreditCard__back--reverse"
         }`}
       >
+        <div className="CreditCard__backBar" />
         {props.cwr.length <= 4 ? (
           <div className="CreditCard__backCwr"> {props.cwr}</div>
         ) : (
