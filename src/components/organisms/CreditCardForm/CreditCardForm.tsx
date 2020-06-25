@@ -3,6 +3,8 @@ import * as React from "react"
 import "./CreditCardForm.scss"
 import CreditCard from "../../molecules/CreditCard/CreditCard"
 import { useState } from "react"
+
+export type CardFormType = "CardName" | "CardNumber" | "CardDate" | "CardCwr"
 interface P {}
 const CreditCardForm: React.FC<P> = props => {
   const [cardNumber, dispatchCardNumber] = React.useReducer(
@@ -45,6 +47,8 @@ const CreditCardForm: React.FC<P> = props => {
   )
   const [cardIsReverse, setCardIsReverse] = useState(false)
 
+  const [focusFormType, setFocusFormType] = useState<CardFormType | null>(null)
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value.split("").map(v => Number(v)) ?? []
     dispatchCardNumber(value)
@@ -70,10 +74,50 @@ const CreditCardForm: React.FC<P> = props => {
     dispatchCwr(value)
   }
 
-  const focusCwr = (event: React.FocusEvent<HTMLElement>) => {
-    console.log(event.currentTarget)
+  const onFocusHandler = (
+    formType: CardFormType,
+    e: React.FocusEvent<HTMLElement>
+  ) => {
+    switch (formType) {
+      case "CardName":
+        setFocusFormType("CardName")
+        break
+      case "CardNumber":
+        setFocusFormType("CardNumber")
+        break
+      case "CardDate":
+        setFocusFormType("CardDate")
+        break
+      case "CardCwr":
+        setCardIsReverse(!cardIsReverse)
+        setFocusFormType("CardCwr")
+        break
+      default:
+        break
+    }
+  }
 
-    setCardIsReverse(!cardIsReverse)
+  const onBluerHandler = (
+    formType: CardFormType,
+    e: React.FocusEvent<HTMLElement>
+  ) => {
+    switch (formType) {
+      case "CardName":
+        setFocusFormType(null)
+        break
+      case "CardNumber":
+        setFocusFormType(null)
+        break
+      case "CardDate":
+        setFocusFormType(null)
+        break
+      case "CardCwr":
+        setCardIsReverse(!cardIsReverse)
+        setFocusFormType(null)
+        break
+      default:
+        break
+    }
   }
 
   const month = [
@@ -107,6 +151,7 @@ const CreditCardForm: React.FC<P> = props => {
         name={name}
         cwr={cwr}
         isReverse={cardIsReverse}
+        focusForm={focusFormType}
       />
       <form className="CreditCardForm__formArea">
         <div className="CreditCardForm__inputArea">
@@ -114,14 +159,37 @@ const CreditCardForm: React.FC<P> = props => {
           <input
             type="number"
             onChange={changeHandler}
+            onFocus={(e: React.FocusEvent<HTMLElement>) =>
+              onFocusHandler("CardNumber", e)
+            }
+            onBlur={(e: React.FocusEvent<HTMLElement>) =>
+              onBluerHandler("CardNumber", e)
+            }
             className="CreditCardForm__inputCardNumber"
           />
         </div>
         <div className="CreditCardForm__inputArea">
           <label className="CreditCardForm__label">name</label>
-          <input type="text" onChange={nameChangeHandler} />
+          <input
+            type="text"
+            onChange={nameChangeHandler}
+            onFocus={(e: React.FocusEvent<HTMLElement>) => {
+              onFocusHandler("CardName", e)
+            }}
+            onBlur={(e: React.FocusEvent<HTMLElement>) =>
+              onBluerHandler("CardName", e)
+            }
+          />
         </div>
-        <div className="CreditCardForm__inputArea">
+        <div
+          className="CreditCardForm__inputArea"
+          onFocus={(e: React.FocusEvent<HTMLElement>) => {
+            onFocusHandler("CardDate", e)
+          }}
+          onBlur={(e: React.FocusEvent<HTMLElement>) =>
+            onBluerHandler("CardDate", e)
+          }
+        >
           <label className="CreditCardForm__label">Expires</label>
           <div className="CreditCardForm__dateSelectBox">
             <select
@@ -151,8 +219,12 @@ const CreditCardForm: React.FC<P> = props => {
             type="number"
             placeholder="cwr"
             onChange={cwrHandler}
-            onFocus={focusCwr}
-            onBlur={focusCwr}
+            onFocus={(e: React.FocusEvent<HTMLElement>) =>
+              onFocusHandler("CardCwr", e)
+            }
+            onBlur={(e: React.FocusEvent<HTMLElement>) =>
+              onBluerHandler("CardCwr", e)
+            }
           />
         </div>
       </form>

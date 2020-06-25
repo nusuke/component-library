@@ -3,6 +3,7 @@ import * as React from "react"
 import "./CreditCard.scss"
 import { useState } from "react"
 import classnames from "classnames"
+import { CardFormType } from "../../organisms/CreditCardForm/CreditCardForm"
 interface P {
   cardNumber: number[]
   date: {
@@ -12,6 +13,7 @@ interface P {
   name?: string
   cwr: number[]
   isReverse?: boolean
+  focusForm?: CardFormType
 }
 const CreditCard: React.FC<P> = props => {
   const [isReverse, setIsReverse] = useState(false)
@@ -22,6 +24,14 @@ const CreditCard: React.FC<P> = props => {
   const classNames = classnames("CreditCard__front", {
     "CreditCard__front--reverce": isReverse,
   })
+
+  const borderActiveClass = classnames(
+    "CreditCard__activeBorder",
+    { "CreditCard__activeBorder--number": props.focusForm === "CardNumber" },
+    { "CreditCard__activeBorder--name": props.focusForm === "CardName" },
+    { "CreditCard__activeBorder--cwr": props.focusForm === "CardCwr" },
+    { "CreditCard__activeBorder--date": props.focusForm === "CardDate" }
+  )
 
   React.useEffect(() => {
     setIsReverse(props.isReverse)
@@ -94,8 +104,15 @@ const CreditCard: React.FC<P> = props => {
           isReverse && "CreditCard__back--reverse"
         }`}
       >
-        <div className="CreditCard__backCwr"> {props.cwr}</div>
+        {props.cwr.length <= 4 ? (
+          <div className="CreditCard__backCwr"> {props.cwr}</div>
+        ) : (
+          <div className="CreditCard__backCwr CreditCard__backCwr--error">
+            4文字以内
+          </div>
+        )}
       </div>
+      <div className={borderActiveClass} />
     </div>
   )
 }

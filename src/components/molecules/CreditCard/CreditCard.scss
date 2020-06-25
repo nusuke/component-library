@@ -1,12 +1,13 @@
 .CreditCard {
+  text-shadow: #222222 0.1px 0.1px;
   transform-style: preserve-3d;
   min-width: 800px;
   min-height: 600px;
   border-radius: 40px;
   color: #f0f0f0;
-  text-shadow: #222222 0.1px 0.1px;
 
   &__front {
+    box-shadow: #666666 0px 4px 12px;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -16,6 +17,54 @@
     transform: rotateY(0deg);
     backface-visibility: hidden;
     transition: all 2s;
+  }
+
+  &__activeBorder {
+    position: absolute;
+    border: solid 3px white;
+    transition: all 0.5s;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+
+    &--number {
+      width: 680px;
+      height: 80px;
+      top: 220px;
+      left: 12px;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    &--name {
+      width: 250px;
+      height: 80px;
+      top: 60%;
+      left: 18px;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    &--date {
+      width: 250px;
+      height: 40px;
+      left: 18px;
+      top: 80%;
+      transition: all 0.5s;
+      opacity: 1;
+    }
+
+    &--cwr {
+      width: 150px;
+      height: 40px;
+      top: calc(50% + 36px);
+      left: 80%;
+      border-color: black;
+      transition: all 1s;
+      opacity: 1;
+    }
   }
 
   &__front--reverce {
@@ -34,6 +83,7 @@
   }
 
   $spanHeight: 32px;
+
   &__frontCardNumberDisplay {
     display: inline-flex;
     flex-direction: column;
@@ -94,11 +144,12 @@
     font-size: 28px;
     position: absolute;
     left: 18px;
-    bottom: 10%;
+    top: 80%;
   }
 
   // card裏面
   &__back {
+    box-shadow: #666666 0px 4px 12px;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -123,5 +174,9 @@
     font-size: 18px;
     height: 36px;
     width: 100%;
+  }
+
+  &__backCwr--error {
+    color: red;
   }
 }
