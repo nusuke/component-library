@@ -29,10 +29,12 @@ const Graph: React.FC<P> = props => {
     context.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height)
     context.fillText(String(year), 10, 10)
 
-    props.data[year]?.map((d, i) => {
-      context.fillText(String(d.label), 20, 40 * (i + 1))
-      context.fillRect(20, 40 * (i + 1), d.data, 20)
-    })
+    props.data[year]
+      ?.sort((l, r) => l.data - r.data)
+      .map((d, i) => {
+        context.fillText(String(d.label), 20, 40 * (i + 1))
+        context.fillRect(20, 40 * (i + 1), d.data, 20)
+      })
 
     context.strokeStyle = "rgb(00,00,255)"
     context.fillStyle = "rgb(255,00,00)"
