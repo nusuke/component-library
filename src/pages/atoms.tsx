@@ -6,6 +6,7 @@ import SEO from "../components/seo"
 import BasicButton from "../components/atoms/BasicButton/BasicButton"
 import Chips from "../components/atoms/Chips/Chips"
 import DeletableChips from "../components/atoms/DeletableChips/DeletableChips"
+import AnimationText from "../components/atoms/AnimationText/AnimationText"
 
 const IndexPage = () => (
   <Layout>
@@ -42,6 +43,9 @@ const IndexPage = () => (
         alert("delete")
       }}
     />
+
+    <h2>Animation Text</h2>
+    <AnimationText text="It is a test" />
   </Layout>
 )
 
