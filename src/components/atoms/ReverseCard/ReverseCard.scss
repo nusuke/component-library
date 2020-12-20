@@ -1,0 +1,37 @@
+.ReverseCard {
+  transform-style: preserve-3d;
+
+  &__front {
+    transform: rotateY(0deg);
+    transition: transform 3s;
+    position: relative;
+    width: 100%;
+    background: red;
+  }
+
+  &__back {
+    transform: rotateY(180deg);
+    position: absolute;
+    top: 0;
+    width: 100%;
+    backface-visibility: hidden;
+  }
+
+  &--reverse {
+    .ReverseCard__front {
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      width: 100%;
+      backface-visibility: hidden;
+    }
+
+    .ReverseCard__back {
+      background: blue;
+      transition: transform 3s;
+      transform: rotateY(0deg);
+      position: relative;
+      width: 100%;
+    }
+  }
+}

@@ -7,6 +7,7 @@ import BasicButton from "../components/atoms/BasicButton/BasicButton"
 import Chips from "../components/atoms/Chips/Chips"
 import DeletableChips from "../components/atoms/DeletableChips/DeletableChips"
 import AnimationText from "../components/atoms/AnimationText/AnimationText"
+import ReverseCard from "../components/atoms/ReverseCard/ReverseCard"
 
 const IndexPage = () => (
   <Layout>
@@ -46,6 +47,9 @@ const IndexPage = () => (
 
     <h2>Animation Text</h2>
     <AnimationText text="It is a test" />
+
+    <h2>ReverseCard</h2>
+    <ReverseCard frontComponent={<>表です。</>} backComponent={<>裏です。</>} />
   </Layout>
 )
 
