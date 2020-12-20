@@ -8,12 +8,15 @@ import "../../node_modules/ress/dist/ress.min.css"
 
 const SecondPage = () => (
   <Layout>
-    <SEO title="Page two" />
-    <h1>Hi from the second page</h1>
-    <p>Welcome to page 2</p>
-    <Link to="/atoms">Atoms</Link>
-    <Link to="/molecules">molecules</Link>
-    <Link to="/organisms">organisms</Link>
+    <div className="Index">
+      <SEO title="Component library" />
+      <h1>遊びで作っているコンポーネントライブラリ</h1>
+      <ul className="Index__linkList">
+        <li><Link to="/atoms">Atoms</Link></li>
+        <li><Link to="/molecules">molecules</Link></li>
+        <li><Link to="/organisms">organisms</Link></li>
+      </ul>
+    </div>
   </Layout>
 )
 
