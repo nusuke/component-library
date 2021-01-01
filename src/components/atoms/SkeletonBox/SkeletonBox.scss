@@ -4,4 +4,32 @@
   background: gray;
   border: solid 1px black;
   margin-right: 4px;
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(#fff, 0.5),
+      transparent
+    );
+    position: absolute;
+    animation-name: slide;
+    animation-duration: 2s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+  }
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(430%);
+  }
 }
