@@ -1,0 +1,16 @@
+.Carousel {
+  border: solid 1px;
+  overflow: hidden;
+  list-style-type: none;
+  width: 600px;
+  height: 200px;
+  overflow-x: scroll;
+  display: flex;
+  flex-shrink: 0;
+  padding: 24px 8px;
+
+  li {
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+}

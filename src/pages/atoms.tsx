@@ -8,6 +8,8 @@ import Chips from "../components/atoms/Chips/Chips"
 import DeletableChips from "../components/atoms/DeletableChips/DeletableChips"
 import AnimationText from "../components/atoms/AnimationText/AnimationText"
 import ReverseCard from "../components/atoms/ReverseCard/ReverseCard"
+import Carousel from "../components/atoms/Carousel/Carousel"
+import SkeletonBox from "../components/atoms/SkeletonBox/SkeletonBox"
 
 const IndexPage = () => (
   <Layout>
@@ -50,6 +52,28 @@ const IndexPage = () => (
 
     <h2>ReverseCard</h2>
     <ReverseCard frontComponent={<>表です。</>} backComponent={<>裏です。</>} />
+
+    <h2>Carousel</h2>
+    <Carousel>
+      <li><SkeletonBox /></li>
+      <li><SkeletonBox /></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox /></li>
+      <li><SkeletonBox /></li>
+      <li><SkeletonBox /></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+      <li><SkeletonBox/></li>
+    </Carousel>
   </Layout>
 )
 
