@@ -5,9 +5,11 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import TagForm from "../components/molecules/TagForm/TagForm"
 import Graph from "../components/molecules/Graph/Graph"
+import SideMenu from "../components/molecules/SideMenu/SideMenu"
 
 const IndexPage = () => {
-  const [chipsList, setChipsList] = useState([])
+  const [chipsList, setChipsList] = useState([]);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   return (
     <Layout>
       <SEO title="Home" />
@@ -59,6 +61,9 @@ const IndexPage = () => {
           ],
         }}
       />
+      <h2>sidemenu</h2>
+      <button onClick={() => {setIsMenuOpen(true)}}>🍔</button>
+      <SideMenu isOpen={isMenuOpen} openHandler={setIsMenuOpen}/>
     </Layout>
   )
 }

@@ -1,0 +1,33 @@
+$breakpoints: (
+  "sm": "screen and (min-width: 400px)",
+  "md": "screen and (min-width: 768px)",
+  "lg": "screen and (min-width: 1000px)",
+  "xl": "screen and (min-width: 1200px)",
+) !default;
+
+@mixin mq($breakpoint: md) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+.SideMenu {
+  height: 100vh;
+  width: 0px;
+  transition: width;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: blue;
+
+  &__hidden {
+    display: none;
+  }
+
+  &--open {
+    width: 400px;
+  }
+  @include mq(sm) {
+    background: red;
+  }
+}
